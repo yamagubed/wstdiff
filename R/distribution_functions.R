@@ -1,0 +1,56 @@
+#' @name tdiff_distributions
+#' @title Distribution Functions for Approximated t-Difference
+#'
+#' @param x,q Vector of quantiles
+#' @param p Vector of probabilities
+#' @param n Number of observations
+#' @param ws_result Result from ws_tdiff_univariate()
+#'
+#' @examples
+#' result <- ws_tdiff_univariate(0, 1, 10, 0, 1.5, 15)
+#' dtdiff(0, result)
+#' ptdiff(0, result)
+#' qtdiff(c(0.025, 0.975), result)
+#' samples <- rtdiff(100, result)
+NULL
+
+#' @rdname tdiff_distributions
+#' @export
+dtdiff <- function(x, ws_result) {
+  if (!inherits(ws_result, "ws_tdiff_univariate")) {
+    stop("ws_result must be output from ws_tdiff_univariate()")
+  }
+  standardized <- (x - ws_result$mu_diff) / ws_result$sigma_star
+  dt(standardized, df = ws_result$nu_star) / ws_result$sigma_star
+}
+
+#' @rdname tdiff_distributions
+#' @export
+ptdiff <- function(q, ws_result) {
+  if (!inherits(ws_result, "ws_tdiff_univariate")) {
+    stop("ws_result must be output from ws_tdiff_univariate()")
+  }
+  standardized <- (q - ws_result$mu_diff) / ws_result$sigma_star
+  pt(standardized, df = ws_result$nu_star)
+}
+
+#' @rdname tdiff_distributions
+#' @export
+qtdiff <- function(p, ws_result) {
+  if (!inherits(ws_result, "ws_tdiff_univariate")) {
+    stop("ws_result must be output from ws_tdiff_univariate()")
+  }
+  if (any(p < 0) || any(p > 1)) {
+    stop("Probabilities must be between 0 and 1")
+  }
+  ws_result$mu_diff + ws_result$sigma_star * qt(p, df = ws_result$nu_star)
+}
+
+#' @rdname tdiff_distributions
+#' @export
+rtdiff <- function(n, ws_result) {
+  if (!inherits(ws_result, "ws_tdiff_univariate")) {
+    stop("ws_result must be output from ws_tdiff_univariate()")
+  }
+  ws_result$mu_diff + ws_result$sigma_star * rt(n, df = ws_result$nu_star)
+}

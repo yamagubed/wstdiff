@@ -1,0 +1,27 @@
+Package: wstdiff
+Version: 1.0.0
+Title: Welch-Satterthwaite Approximation for t-Distribution Differences
+Authors@R: c(
+    person(given  = "Yusuke",
+           family = "Yamaguchi",
+           role   = c("aut","cre"),
+           email  = "yamagubed@gmail.com"))
+Description: Implements the Welch-Satterthwaite approximation for differences
+    of non-standardized t-distributed random variables in both univariate and 
+    multivariate settings. The package provides methods for computing effective
+    degrees of freedom and scale parameters, as well as distribution functions
+    for the approximated difference distribution. The methodology extends the
+    classical Welch-Satterthwaite framework from variance combinations to
+    t-distribution differences through careful moment matching.
+License: file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.3.3
+Depends: R (>= 3.5.0)
+Imports:
+    stats
+Suggests: 
+    testthat (>= 3.0.0),
+    mvtnorm,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
