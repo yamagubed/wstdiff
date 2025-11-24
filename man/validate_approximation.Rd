@@ -21,10 +21,8 @@ Validates the approximation quality by comparing moments of the
 approximated distribution with the theoretical moments.
 }
 \examples{
-\dontrun{
 result <- ws_tdiff_univariate(0, 1, 10, 0, 1.5, 15)
 validation <- validate_approximation(result)
 print(validation)
-}
 
 }

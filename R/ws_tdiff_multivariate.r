@@ -129,7 +129,7 @@ ws_tdiff_multivariate_independent <- function(mu1, sigma1, nu1, mu2, sigma2, nu2
 #'
 #' @export
 ws_tdiff_multivariate_general <- function(mu1, Sigma1, nu1, mu2, Sigma2, nu2,
-                                          max_iter = 10, tol = 1e-6) {
+                                          max_iter = 10, tol = 1e-3) {
   # Input validation
   if (nu1 <= 4 || nu2 <= 4) {
     stop("Both nu1 and nu2 must be greater than 4")

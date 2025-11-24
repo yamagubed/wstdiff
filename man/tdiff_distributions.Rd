@@ -25,6 +25,13 @@ rtdiff(n, ws_result)
 
 \item{n}{Number of observations}
 }
+\value{
+For \code{dtdiff}: Numeric vector of density values.
+For \code{ptdiff}: Numeric vector of cumulative probabilities.
+For \code{qtdiff}: Numeric vector of quantiles.
+For \code{rtdiff}: Numeric vector of random samples from the approximated
+t-difference distribution.
+}
 \description{
 Distribution Functions for Approximated t-Difference
 }

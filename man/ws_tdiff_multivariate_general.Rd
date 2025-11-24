@@ -12,7 +12,7 @@ ws_tdiff_multivariate_general(
   Sigma2,
   nu2,
   max_iter = 10,
-  tol = 1e-06
+  tol = 0.001
 )
 }
 \arguments{
